@@ -1,6 +1,15 @@
 /** Critical CSS for the theme. This file is included on every page. */
 
 /* Reset styles inspired by https://www.joshwcomeau.com/css/custom-css-reset/ */
+@font-face {
+  font-family: 'Outfit'; /* El nombre que usarás en tu CSS para referenciar la fuente */
+  src: url('{{ "Outfit-Light.woff2" | asset_url }}') format('woff2');
+  font-weight: 300; /* Define el peso de la fuente (normal, bold, 300, 400, 700, etc.) */
+  font-style: normal; /* Define el estilo (normal, italic) */
+  font-display: swap; /* Muy importante para el rendimiento y UX */
+}
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -73,7 +82,7 @@ p:empty {
 
 /** Theme styles below */
 body {
-  font-family: var(--font-primary--family);
+  font-family: 'Outfit', sans-serif;
   background-color: var(--color-background);
   color: var(--color-foreground);
 }
@@ -92,17 +101,9 @@ body {
  * the entire viewport.
  */
 .shopify-section {
-  --content-width: min(
-    calc(var(--page-width) - var(--page-margin) * 2),
-    calc(100% - var(--page-margin) * 2)
-  );
-  --content-margin: minmax(var(--page-margin), 1fr);
-  --content-grid: var(--content-margin) var(--content-width) var(--content-margin);
 
   /* This is required to make <img> elements work as background images */
   position: relative;
-  grid-template-columns: var(--content-grid);
-  display: grid;
   width: 100%;
 }
 
@@ -114,4 +115,16 @@ body {
 /* Child elements that use the full-width utility class span the entire viewport. */
 .shopify-section > .full-width {
   grid-column: 1 / -1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+	font-family: "Outfit", sans-serif;
+	background: none;
+	border: none;
+	cursor: pointer;
 }

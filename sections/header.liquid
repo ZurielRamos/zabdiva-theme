@@ -1,4 +1,7 @@
-<header>
+{{ 'header.css' | asset_url | stylesheet_tag }}
+
+
+{% comment %} <header>
   <h2 class="header__title">
     {{ shop.name | link_to: routes.root_url }}
   </h2>
@@ -22,34 +25,117 @@
       {{ 'icon-cart.svg' | inline_asset_content }}
     </a>
   </div>
+</header> {% endcomment %}
+
+<header id="main-header">
+  <a href="/contacto">Contacta con nosotros</a>
+
+  <a href={{ routes.root_url }} class="zabdiva">
+    {{ 'zabdiva.svg' | inline_asset_content  }}
+  </a>
+
+  <ul class="actions">
+    <li>
+        <button id="cart-btn">
+            {{ 'bag-icon.svg' | inline_asset_content }}
+        </button>
+    </li>
+    <li class="user-menu">
+        <button>
+            {{ 'user-icon.svg' | inline_asset_content }}
+        </button>
+        <UserMenu/>
+    </li>
+    <li>
+        <button>
+            {{ 'search-icon.svg' | inline_asset_content }}
+        </button>
+    </li>
+    <li>
+        <button id="menu-button" class="menu-button">
+            {{ 'menu-icon.svg' | inline_asset_content }}
+            <span>MENU</span>
+        </button>
+    </li>
+  </ul>
 </header>
 
+
+
+
+
+<script>
+
+    const initAnimationHeader = () => {
+        function handleScroll() {
+            const header = document.getElementById('main-header');
+
+            if(!header) return;
+            if (window.scrollY > 0) {
+                if(header.classList.contains('scrl')) return;
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+        window.addEventListener('scroll', handleScroll);
+
+        function cartAnimation() {
+            const emptyCart = document.getElementById('empty-cart');
+            if(!emptyCart) return;
+            emptyCart.classList.add('active');
+            setTimeout(() => {
+                emptyCart.classList.remove('active');
+            }, 1500);
+        }
+        document.getElementById('cart-btn')?.addEventListener('click', cartAnimation);
+
+        function toggleUserMenu() {
+            const userMenu = document.getElementById('user-menu');
+            if(!userMenu) return;
+            userMenu.classList.toggle('active');
+        }
+        document.querySelector('.user-menu button')?.addEventListener('click', toggleUserMenu);
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar-menu');
+            const closeButton = document.getElementById('sidebar-close');
+            const menuButton = document.getElementById('menu-button');
+
+            if(!sidebar || !menuButton || !closeButton) return;
+            sidebar.classList.toggle('active');
+        }
+        document.getElementById('menu-button')?.addEventListener('click', toggleSidebar);
+        document.getElementById('sidebar-close')?.addEventListener('click', toggleSidebar);
+
+        function toggleContactBar() {
+            const sidebar = document.getElementById('contact-menu');
+
+            if(!sidebar) return;
+            sidebar.classList.toggle('active');
+        }
+        document.getElementById('contact-btn')?.addEventListener('click', toggleContactBar);
+        document.getElementById('contact-close')?.addEventListener('click', toggleContactBar);
+    }
+
+    document.addEventListener('wheel', ()=>{
+        document.getElementById('user-menu')?.classList.remove('active');
+        document.getElementById('sidebar-menu')?.classList.remove('active');
+        document.getElementById('contact-menu')?.classList.remove('active');
+    })
+    
+    document.addEventListener('DOMContentLoaded', initAnimationHeader);
+</script>
+
+
+
+
+
 {% stylesheet %}
-  header {
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  header a {
-    position: relative;
-    text-decoration: none;
-    color: var(--color-foreground);
-  }
-  header a sup {
-    position: absolute;
-    left: 100%;
-    overflow: hidden;
-    max-width: var(--page-margin);
-  }
-  header svg {
-    width: 2rem;
-  }
-  header .header__menu,
-  header .header__icons {
-    display: flex;
-    gap: 1rem;
-  }
+  
+
+
+
 {% endstylesheet %}
 
 {% schema %}

@@ -1,0 +1,126 @@
+header .zabdiva svg {
+    position: fixed;
+    left: 50%;
+    top: .8rem;
+    transform: translate(-50%, 50px);
+    width: 80% !important;
+    opacity: .6;
+    transition: all .4s ease;
+    fill: white;
+}
+
+header {
+    max-width: 1920px;
+    margin: auto;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    color: white;
+}
+
+header.scrolled .contact-link, header.scrl .contact-link {
+    color: black;
+}
+
+header.scrolled, header.scrl {
+    color: black;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: transparent;
+    transform: translateY(20px);
+    transition: all .2s ease-in-out;
+}
+
+header.scrolled::before, header.scrl::before {
+    transform: translateY(0);
+    position: absolute;
+    background: white;
+}
+
+
+header.scrolled .zabdiva svg, header.scrl .zabdiva svg {
+    transform: translate(0, 0px);
+    left: 1rem;
+    fill: black;
+    opacity: 1;
+    width: 190px !important;
+}
+
+  .actions {
+      display: flex;
+      gap: 0rem;
+  }
+
+  .actions li {
+      list-style: none;
+  }
+
+  header .actions li > button,header .actions li > a  {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      color: white;
+      fill: white;
+  }
+  header.scrolled .actions li > button,header.scrolled .actions li > a {
+      color: black;
+      fill: black;
+  }
+
+  .actions li svg {
+      width: 17px;
+      height: 17px;
+  }
+
+@media screen and (min-width: 992px) {
+    header {
+        padding: 0rem 4rem;
+    }
+    nav {
+        padding: 1.5rem 4rem;
+    }
+    header .zabdiva svg {
+        width: 800px;
+        transform: translate(-50%, 10vh);
+
+    }
+    header.scrolled .zabdiva svg, header.scrl .zabdiva svg {
+        transform: translate(-50%, 0) !important;
+        fill: black;
+        opacity: 1;
+        left: 50% !important;
+        width: 200px !important;
+    }
+
+    .contact-link {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
+
+    .contact-link:hover svg {
+        transform: rotate(90deg);
+    }
+
+    .contact-link svg {
+        width: 12px;
+        height: 12px;
+        stroke: #fff;
+        stroke-width: 3px;
+        transition: transform .4s ease-in-out;
+    }
+}
