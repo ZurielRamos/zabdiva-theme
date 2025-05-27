@@ -1,36 +1,51 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero-home-slider": {
       "type": "hero-home-slider",
       "blocks": {
-        "Slide1": {
+        "slide_U7gFmP": {
           "type": "slide",
           "settings": {
-            "title": "Boutique Virtual de Moda Femenina",
+            "title": "Tienda Virtual de Moda Femenina",
             "image": "shopify://shop_images/hero-home-1.jpg",
             "link_text": "Ir a la tienda",
-            "link_url": "/"
+            "link_url": "shopify://collections/all"
           }
         },
-        "Slide2": {
+        "slide_eBpK7H": {
           "type": "slide",
           "settings": {
             "title": "BMNT - Nueva Colección",
             "image": "shopify://shop_images/hero-home-2.jpg",
-            "link_text": "Ver colección",
-            "link_url": "/"
+            "link_text": "Ver Colección",
+            "link_url": "shopify://collections"
           }
         },
-        "Slide3": {
+        "slide_EqJJDy": {
           "type": "slide",
           "settings": {
             "title": "Cápsula",
             "image": "shopify://shop_images/hero-home-3.jpg",
-            "link_text": "Ver cápsula",
-            "link_url": "/"
+            "link_text": "Ver Cápsula",
+            "link_url": "shopify://collections"
           }
         }
-      }
+      },
+      "block_order": [
+        "slide_U7gFmP",
+        "slide_eBpK7H",
+        "slide_EqJJDy"
+      ],
+      "settings": {}
     }
   },
   "order": [
